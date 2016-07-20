@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/templates/default.xhml">
+      
+      
+      <ui:param name="mainContentTitle" value="Cadastro de Usuário" />
+      <ui:param name="renderedMenuBar" value="false" />
+      
+      <ui:define name="mainContent">
+      	<h:form prependId="false">
+      		<div class="ui-fluid">
+      			<p:panelGrid columns="3" layout="grid" columnClasses="ui-grid-col1,ui-grid-col4, ui-grid-col7" styleClass="ui-panelgrid-blank">
+      			    <p:outputLabel for="userName" value="Name" />
+      			    <p:inputText id="userName" value="#{userController.user.name}" />
+      			    <p:message for="userName" />
+      			    
+      			    <p:outputLabel for="userLogin" value="Login" />
+      			    <p:inputText id="userLogin" autocomplete="false" value="#{userController.user.login}" />
+      			    <p:message for="userLogin" />
+      			    
+      			    <p:outputLabel for="userPassword" value="Password" />
+      			    <p:password id="userPassword" autocomplete="false" value="#{userController.password}" />
+      			    <p:message for="userPassword" />
+      			    
+      			    <p:outputLabel for="userPasswordConfirmation" value="Confirm Password" />
+      			    <p:password id="userPasswordConfirmation" autocomplete="false" value="#{userController.password}" />
+      			    <p:message for="userPasswordConfirmation" />
+      			    
+      			    <p:commandButton value="Save" action="#{userController.insert}" ajax="false" validateClient="true" />
+      			    
+      			</p:panelGrid>
+      		</div>
+      	</h:form>
+      </ui:define>
+      
+      
+</ui:composition>
+
