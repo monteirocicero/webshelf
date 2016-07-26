@@ -32,7 +32,7 @@ public class User implements Serializable {
 	this.password = password;
     }
 
-    public String encryptPassword(String clearPassword) {
+    public static String encryptPassword(String clearPassword) {
 	try {
 	    MessageDigest md = MessageDigest.getInstance("MD5");
 	    md.update(clearPassword.getBytes());

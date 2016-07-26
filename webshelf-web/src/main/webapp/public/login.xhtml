@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/default.xhtml">
+	<ui:param name="mainContentTitle" value="WebShelf" />
+	<ui:param name="renderedMenuBar" value="false" />
+
+	<ui:define name="mainContent">
+		<h:form prependId="false">
+			<div class="ui-fluid">
+				<p:panelGrid columns="3" layout="grid"
+					columnClasses="ui-grid-col-1, ui-grid-col-4, ui-grid-col-7"
+					styleClass="ui-panelgrid-blank">
+
+					<p:outputLabel for="userLogin" value="Login" />
+					<p:inputText id="userLogin" autocomplete="false"
+						value="#{loginController.login}" />
+					<p:message for="userLogin" />
+
+
+					<p:outputLabel for="userPassword" value="Password" />
+					<p:password id="userPassword" autocomplete="false"
+						value="#{loginController.password}" />
+					<p:message for="userPassword" />
+				</p:panelGrid>
+
+
+				<p:panelGrid columns="3" layout="grid"
+					columnClasses="ui-grid-col-1, ui-grid-col-2, ui-grid-col-2"
+					styleClass="ui-panelgrid-blank">
+					
+					<h:outputText/>
+					
+					<p:commandButton value="Enter" action="#{loginController.doLogin()}" ajax="false" validateClient="true" />
+					
+					<p:button value="Register" outcome="insertUser" />
+					
+				</p:panelGrid>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
