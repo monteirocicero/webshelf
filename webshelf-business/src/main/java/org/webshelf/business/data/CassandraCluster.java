@@ -39,7 +39,7 @@ public class CassandraCluster {
     }
     
     private BoundStatement prepare(String cql) {
-	if (preparedStatementCache.containsKey(cql)) {
+	if (!preparedStatementCache.containsKey(cql)) {
 	    this.preparedStatementCache.put(cql, session.prepare(cql));
 	}
 	return this.preparedStatementCache.get(cql).bind();
