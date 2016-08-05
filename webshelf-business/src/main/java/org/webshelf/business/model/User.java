@@ -29,7 +29,7 @@ public class User implements Serializable {
     private String password;
 
     public void setClearPassword(String password) {
-	this.password = password;
+	this.password = encryptPassword(password);
     }
 
     public static String encryptPassword(String clearPassword) {
