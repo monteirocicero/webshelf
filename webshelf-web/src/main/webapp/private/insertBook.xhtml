@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/WEB-INF/templates/default.xhtml">
+	    <ui:param name="mainContentTitle" value="Book Register" />
+	    <ui:param name="renderedMenuBar" value="true" />
+	    
+	    <ui:define name="mainContent">
+	    	<h:form prependId="false" enctype="multipart/form-data">
+	    		<div class="ui-fluid">
+	    			<p:panelGrid columns="3" layout="grid" columnClasses="ui-grid-col1, ui-grid-col4, ui-grid-col7" styleClass="ui-panelgrid-blank">
+	    			
+	    				<p:outputLabel for="bookTitle" value="Title:" />
+	    				<p:inputText id="bookTitle" value="#{bookController.book.title}" />
+	    				<p:message for="bookTitle" />
+	    				
+	    				<p:outputLabel for="bookAuthor" value="Author:" />
+	    				<p:inputText id="bookAuthor" value="#{bookController.book.author}" />
+	    				<p:message for="bookAuthor" />
+	    				
+	    				<p:outputLabel for="bookPublisher" value="Publisher:" />
+	    				<p:inputText id="bookPublisher" value="#{bookController.book.publisher}" />
+	    				<p:message for="bookPublisher" />
+	    				
+	    				<p:outputLabel for="bookCountry" value="Country:" />
+	    				<p:inputText id="bookCountry" value="#{bookController.book.country}" />
+	    				<p:message for="bookCountry" />
+	    				
+	    				<p:outputLabel for="bookIsbn" value="Country:" />
+	    				<p:inputText id="bookIsbn" value="#{bookController.book.isbn}" />
+	    				<p:message for="bookIsbn" />
+	    			</p:panelGrid>
+	    			
+	    			<br />
+	    			
+	    			<p:panelGrid columns="1" layout="grid" columnClasses="ui-grid-col-1" styleClass="ui-panelgrid-blank">
+	    				<p:fileUpload id="bookImage" label="Image" auto="true" allowTypes="/(\.|V)(jpg|jpeg|png)$/" sizeLimit="20480"
+	    				value="#{bookController.image}"
+	    				invalidFileMessage="Invalid file type"
+	    				invalidSizeMessage="File size not permited"
+	    				fileUploadListener="#{bookController.uploadImage}" process="@this" update="@this bookImageName">
+	    				</p:fileUpload>
+	    			</p:panelGrid>
+	    			
+	    			<h:outputText id="bookImageName" value="#{bookController.image == null ? bookController.image.fileName}"/>
+	    			
+	    			<h:outputText/>
+	    			
+	    			<p:commandButton value="Save" action="#{bookController.insert}" ajax="false" validateClient="true"/>
+	    			
+	    		</div>
+	    	</h:form>
+	    </ui:define>
+	
+	</ui:composition>
+</html>
