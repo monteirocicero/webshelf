@@ -1,4 +1,4 @@
-package org.webshelf.web.service;
+package org.webshelf.business.service;
 
 import java.util.Set;
 
@@ -11,8 +11,8 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 import org.webshelf.business.data.CassandraCluster;
+import org.webshelf.business.exception.BusinessRuleException;
 import org.webshelf.business.model.User;
-import org.webshelf.web.exception.BusinessRuleException;
 
 import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.ResultSet;
@@ -38,7 +38,7 @@ public class UserBean {
 	mapper.delete(user);
     }
     
-    public void insertUser(User user) {
+    public void insertUser(User user) throws BusinessRuleException {
 	executeBeanValidation(user);
 	
 	BoundStatement insertUser = this.cassandra.boundInsertUser();

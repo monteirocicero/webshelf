@@ -51,7 +51,19 @@ public class CassandraCluster {
     }
     
     public BoundStatement boundInsertUser() {
-	return prepare("INSERT INTO webshelf.user(login, name, password) VALUES (?, ?, ?) IF NOT EXISTS;");
+	return prepare("INSERT INTO webshelf.user(isbn, title, password) VALUES (?, ?, ?) IF NOT EXISTS;");
+    }
+    
+    public BoundStatement boundInsertBookByISBN() {
+	return prepare("INSERT INTO webshelf.book_by_isbn(isbn, title, author, country, publisher, image) VALUES (?, ?, ?, ?, ?, ?) IF NOT EXISTS;");
+    }
+    
+    public BoundStatement boundInsertBookByTitle() {
+	return prepare("INSERT INTO webshelf.book_by_title(isbn, title, author, country, publisher, image) VALUES (?, ?, ?, ?, ?, ?) IF NOT EXISTS;");
+    }
+    
+    public BoundStatement boundInsertBookByAuthor() {
+	return prepare("INSERT INTO webshelf.book_by_author(isbn, title, author, country, publisher, image) VALUES (?, ?, ?, ?, ?, ?) IF NOT EXISTS;");
     }
 
     public Mapper<User> mapper(Class<User> clazz) {
@@ -63,5 +75,6 @@ public class CassandraCluster {
 	this.session.close();
 	this.cluster.close();
     }
+
 
 }

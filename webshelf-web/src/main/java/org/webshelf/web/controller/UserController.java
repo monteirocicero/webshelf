@@ -9,7 +9,7 @@ import javax.inject.Named;
 import org.apache.deltaspike.jsf.api.message.JsfMessage;
 import org.hibernate.validator.constraints.NotBlank;
 import org.webshelf.business.model.User;
-import org.webshelf.web.service.UserBean;
+import org.webshelf.business.service.UserBean;
 import org.webshelf.web.util.Messages;
 
 @Named
